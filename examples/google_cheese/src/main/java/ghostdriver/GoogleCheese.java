@@ -135,6 +135,7 @@ public class GoogleCheese {
         if (driverName.equals("firefox")) {
             System.out.println("*** USING FIREFOX DRIVER ***");
 
+            System.setProperty("webdriver.firefox.bin", paths.getProperty("firefox"));
             driver = new FirefoxDriver(capabilities);
 
             actualCapabilities = ((FirefoxDriver) driver).getCapabilities();
