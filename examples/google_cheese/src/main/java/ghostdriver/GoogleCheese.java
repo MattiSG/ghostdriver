@@ -168,6 +168,7 @@ public class GoogleCheese {
             } catch (Exception e) {
                 // Ensure we don't leave zombies around...
                 phantomjsProcess.destroy();
+                throw new RuntimeException(e);
             }
         }
         
