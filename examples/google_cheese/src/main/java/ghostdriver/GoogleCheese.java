@@ -126,7 +126,7 @@ public class GoogleCheese {
         }
         
         System.out.println("\n\n**********************\n"
-                           + driverDescription + "\n"
+                           + "Using " + driverDescription + "\n"
                            + "**********************");
         
         long timeToStartDriver,
