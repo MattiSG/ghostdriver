@@ -114,9 +114,21 @@ public class GoogleCheese {
     }
 
     /**
-     *@return   Array of nanoseconds durations: {timeToStartDriver, timeToTest, totalTime}
+     *@return   Array of nanoseconds durations: {timeToStartDriver, timeToTest, totalTime}, or `null` if the driver is not known.
      */
     public static long[] runTestWithDriver(String driverName) throws MalformedURLException, IOException, InterruptedException {
+        String driverDescription = availableDrivers.getProperty(driverName);
+        
+        if (driverDescription == null) {
+            System.err.println("Oops, driver '" + driverName + "' is unknown  :/");
+            System.err.println("Take a look at the '" + DRIVERS_LIST_FILE + "' for a list of available drivers.");
+            return null;
+        }
+        
+        System.out.println("\n\n**********************\n"
+                           + driverDescription + "\n"
+                           + "**********************");
+        
         long timeToStartDriver,
              timeToTest,
              totalTime;
@@ -131,24 +143,19 @@ public class GoogleCheese {
 
         // Start the clock
         long startTime = System.nanoTime();
+        
 
         if (driverName.equals("firefox")) {
-            System.out.println("*** USING FIREFOX DRIVER ***");
-
             System.setProperty("webdriver.firefox.bin", paths.getProperty("firefox"));
             driver = new FirefoxDriver(capabilities);
 
             actualCapabilities = ((FirefoxDriver) driver).getCapabilities();
         } else if (driverName.equals("chrome")) {
-            System.out.println("*** USING CHROME DRIVER ***");
-
             System.setProperty("webdriver.chrome.driver", paths.getProperty("chromedriver"));
             driver = new ChromeDriver();
 
             actualCapabilities = ((ChromeDriver) driver).getCapabilities();
         } else if (driverName.equals("ghost")) {
-            System.out.println("*** USING GHOSTDRIVER ***");
-
             phantomjsProcess = Runtime.getRuntime().exec(paths.getProperty("phantomjs") + ' ' + paths.getProperty("ghostdriver"));
 
             BufferedReader phantomOutputReader = new BufferedReader(new InputStreamReader(phantomjsProcess.getInputStream()));
@@ -162,9 +169,6 @@ public class GoogleCheese {
                 // Ensure we don't leave zombies around...
                 phantomjsProcess.destroy();
             }
-        } else {
-            System.err.println("Oops, driver '" + driverName + "' is unknown  :/");
-            System.err.println("Take a look at the '" + DRIVERS_LIST_FILE + "' for a list of available drivers.");
         }
         
         timeToStartDriver = System.nanoTime() - startTime;
