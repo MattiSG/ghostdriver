@@ -62,6 +62,8 @@ public class GoogleCheese {
                                + "-----------------------------------------------\n"
                                + "If you simply want to test one driver, provide its name as argument.\n"
                                + "You can see and edit possible drivers in the .properties files along this example file.");
+            runStats();
+            
         } else {
             runTestWithDriver(args[0].toLowerCase());
         }
