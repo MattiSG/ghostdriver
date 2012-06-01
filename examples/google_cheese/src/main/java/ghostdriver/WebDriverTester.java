@@ -196,7 +196,10 @@ public abstract class WebDriverTester {
     }
     
     protected WebDriver setupFirefoxDriver() {
-        System.setProperty("webdriver.firefox.bin", paths.getProperty("firefox"));
+        String firefoxBinary = paths.getProperty("firefox");
+    	if (firefoxBinary != null)
+	        System.setProperty("webdriver.firefox.bin", firefoxBinary);
+
         WebDriver driver = new FirefoxDriver(desiredCapabilities);
         
         return driver;
