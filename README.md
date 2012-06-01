@@ -16,7 +16,7 @@ It's going to be a Remote WebDriver that uses PhantomJS as back-end.
 
 ## Presentation and Slides
 
-In April 2012 I presented GhostDriver at the [Selenium Conference](http://www.seleniumconf.org/speakers/#IDM):
+In April 2012 Ivan De Marino presented GhostDriver at the [Selenium Conference](http://www.seleniumconf.org/speakers/#IDM):
 [slides](http://detro.github.com/ghostdriver/slides/index.html)
 and
 [video](http://blog.ivandemarino.me/2012/05/01/Me-the-Selenium-Conference-2012).
@@ -50,15 +50,15 @@ For a quick speed comparison with other WebDriver implementations, try passing t
 ### Pros of using an Headless browser for your Selenium testing
 * Speed: makes development faster
 * Speed: makes THE developer happier
-* Speed: makes leaves more time for beer, video-games, cycling or whatever you fancy
+* Speed: leaves more time for beer, video-games, cycling or whatever you fancy
 * ...
 
 ### Cons of using an Headless browser for your Selenium testing
-* PhantomJS is not a "Real" Browser, but _"just"_ very very close to on
+* PhantomJS is not a "Real" Browser, but "just" very very close to it
 
 ## Contributions
 
-You can contribute testing it and reporting bugs and issues, or submitting Pull Requests.
+You can contribute by testing it and reporting bugs and issues, or by submitting Pull Requests.
 _Any help is more than welcome!!!_
 
 ## License
