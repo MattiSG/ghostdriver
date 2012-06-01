@@ -24,18 +24,36 @@ import java.util.HashMap;
 
 public abstract class WebDriverTester {
     
-    /** Port used by GhostDriver.
-     */
-    public static int port = 8080;
-    
     /** Number of iterations when computing statistics.
      */
     public static final int STATS_SAMPLING_SIZE = 100;
     
+    /** Set of files from which to fetch the properties.
+     */
+    //@{
+    /** File storing all supported drivers and their user-readable description as properties.
+     * The contents of that file should be edited to reflect the user's setup.
+     *
+     *@see java.util.Properties
+     */
+    public static final String DRIVERS_LIST_FILE = "config/drivers.properties";
+    
+    /** File storing paths to all necessary executables as properties.
+     * The contents of that file should be edited to reflect the user's setup.
+     *
+     *@see java.util.Properties
+     */
+    public static final String DRIVERS_PATHS_FILE = "config/paths.properties";
     
     /** Value appended to some properties list to get their default values.
      */
     public static final String DEFAULTS_EXTENSION = ".defaults";
+    //@}
+    
+    /** Port used by GhostDriver.
+     */
+    public static int port = 8080;
+    
     
     /** The desired capabilities for all drivers.
      */
@@ -49,14 +67,6 @@ public abstract class WebDriverTester {
      */
     protected static Properties paths;
 
-    
-    /** Set of files from which to fetch the properties.
-     */
-    //@{
-    private static final String DRIVERS_LIST_FILE = "config/drivers.properties"; // list of all drivers and their user-readable description
-    
-    private static final String DRIVERS_PATHS_FILE = "config/paths.properties"; // paths to all necessary executables; the contents of that file should be edited to reflect your setup
-    //@}
     
     /** Some drivers might need to start another process.
     */
