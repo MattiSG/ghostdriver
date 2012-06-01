@@ -26,7 +26,7 @@ public abstract class WebDriverTester {
     
     /** Number of iterations when computing statistics.
      */
-    public static final int STATS_SAMPLING_SIZE = 100;
+    public static final int STATS_SAMPLING_SIZE = 10;
     
     /** Set of files from which to fetch the properties.
      */
