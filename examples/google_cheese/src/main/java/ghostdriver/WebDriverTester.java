@@ -217,7 +217,7 @@ public abstract class WebDriverTester {
         try {
             runTestOn(driver);
         } finally {
-            cleanup();
+            cleanup(driver);
         }
 
         totalTime = System.nanoTime() - startTime;
@@ -251,7 +251,7 @@ public abstract class WebDriverTester {
     }
     
     protected WebDriver setupGhostDriver() {
-        WebDriver driver;
+        WebDriver driver = null;
         try {
 	        serverProcess = Runtime.getRuntime().exec(paths.getProperty("phantomjs") + ' ' + paths.getProperty("ghostdriver"));
 	        
@@ -262,15 +262,19 @@ public abstract class WebDriverTester {
     	    System.out.println("Remote WebDriver server port: " + port);    
 	        driver = new RemoteWebDriver(new URL("http://localhost:" + port), desiredCapabilities);
         } catch (Exception e) {
-        	cleanup();
+        	cleanup(driver);
         	throw new RuntimeException(e);
         }
                 
         return driver;
     }
     
-    protected void cleanup() {
+    protected void cleanup(WebDriver driver) {
         // Ensure we don't leave zombies around...
+
+        if (driver != null)
+            driver.quit();
+        
         if (serverProcess != null)
             serverProcess.destroy();
     }
