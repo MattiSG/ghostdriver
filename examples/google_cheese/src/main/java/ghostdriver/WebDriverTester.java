@@ -33,6 +33,10 @@ public abstract class WebDriverTester {
     public static final int STATS_SAMPLING_SIZE = 100;
     
     
+    /** Value appended to some properties list to get their default values.
+     */
+    public static final String DEFAULTS_EXTENSION = ".defaults";
+    
     /** The desired capabilities for all drivers.
      */
     protected DesiredCapabilities desiredCapabilities;
@@ -69,7 +73,14 @@ public abstract class WebDriverTester {
         
         try {
             paths = new Properties();
-            paths.load(new FileReader(DRIVERS_PATHS_FILE));
+            paths.load(new FileReader(DRIVERS_PATHS_FILE + DEFAULTS_EXTENSION));
+            try {
+                paths.load(new FileReader(DRIVERS_PATHS_FILE));
+            } catch (java.io.FileNotFoundException e) {
+                System.err.println("\nAre you sure you don't need to override the default executables paths?\n"
+                                   + "If tests fail, first make sure the '" + DRIVERS_PATHS_FILE + "' properties point at the proper executables on your system!\n");
+                // no specific error recovery procedure
+            }
         } catch (Exception e) {
             throw new RuntimeException("Error while trying to load executable paths file (" + DRIVERS_PATHS_FILE + ")", e);
         }

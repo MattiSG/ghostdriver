@@ -12,3 +12,6 @@ build
 *.ipr
 *.iws
 *.class
+
+# Config
+examples/google_cheese/config/paths.properties
