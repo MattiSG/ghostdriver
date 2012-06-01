@@ -34,21 +34,16 @@ of PhantomJS, and build it (I assume you know Git).
 There is **plenty to do before this is usable**, but if you can't wait to try
 PhantomJS's speed when it acts as a RemoteWebDriver Server, do the following:
 
-1. Start GhostDriver on a terminal:
+1. Indicate the location of the needed executables (`phantomjs`…) by editing the `examples/google_cheese/config/paths.properties.default` file.
+
+2. Build and launch the first Java-based example (to build we use [Gradle](http://www.gradle.org/), already included):
 
     ```bash
-    $> phantomjs ghostdriver/src/main.js
-    Ghost Driver running on port 8080
+    $> cd ghostdriver
+    $> ./gradlew googleExample -Pargs="ghost"
     ```
 
-2. Build and Launch the first Java-based example (to build we use [Gradle](http://www.gradle.org/), already included):
-
-    ```bash
-    $> cd ghostdriver/examples/google_cheese/
-    $> ./gradlew execServer -Pargs="1 8080"
-    ```
-
-For a quick speed comparison with other WebDriver implementations, try passing the parameter `firefox` or `chrome` to the `./mvnexec.sh` script.
+For a quick speed comparison with other WebDriver implementations, try passing the parameter `firefox` or `chrome` as `-Pargs`.
 
 ## Reasoning: pros and cons
 
