@@ -23,6 +23,11 @@ import java.util.HashMap;
 
 
 public class GoogleCheese {
+    
+    /** Port used by GhostDriver.
+     */
+    public static int port = 8080;
+    
     /** Set of files from which to fetch the properties.
      */
     //@{
@@ -54,6 +59,11 @@ public class GoogleCheese {
         }
     }
     
+    /**
+     * Usage: [driverName [port]]
+     * Where `diverName` is one of the drivers listed in the `DRIVERS_LIST_FILE` properties file.
+     * If `driverName` refers to GhostDriver, then the optional `port` argument may be used to override the default.
+     */
     public static void main(String[] args) throws MalformedURLException, IOException, InterruptedException {
         init();
         
@@ -66,6 +76,9 @@ public class GoogleCheese {
             
         } else {
             runTestWithDriver(args[0].toLowerCase());
+            
+            if (args.length > 1)
+                port = Integer.parseInt(args[1]);
         }
 
         System.exit(0);
@@ -163,7 +176,9 @@ public class GoogleCheese {
             phantomOutputReader.close();
 
             try {
-                driver = new RemoteWebDriver(new URL("http://localhost:8080"), capabilities);
+                System.out.println("Remote WebDriver server port: " + port);
+                
+                driver = new RemoteWebDriver(new URL("http://localhost:" + port), capabilities);
                 actualCapabilities = ((RemoteWebDriver) driver).getCapabilities();
             } catch (Exception e) {
                 // Ensure we don't leave zombies around...
