@@ -202,7 +202,12 @@ public abstract class WebDriverTester {
     
     protected WebDriver setupChromeDriver() {
         System.setProperty("webdriver.chrome.driver", paths.getProperty("chromedriver"));
-        WebDriver driver = new ChromeDriver();
+        
+        String chromeBinary = paths.getProperty("chrome");
+        if (chromeBinary != null)
+            desiredCapabilities.setCapability("chrome.binary", chromeBinary);
+        
+        WebDriver driver = new ChromeDriver(desiredCapabilities);
         
         return driver;
     }
