@@ -45,9 +45,9 @@ public abstract class WebDriverTester {
     /** Set of files from which to fetch the properties.
      */
     //@{
-    private static final String DRIVERS_LIST_FILE = "drivers.properties"; // list of all drivers and their user-readable description
+    private static final String DRIVERS_LIST_FILE = "config/drivers.properties"; // list of all drivers and their user-readable description
     
-    private static final String DRIVERS_PATHS_FILE = "paths.properties"; // paths to all necessary executables; the contents of that file should be edited to reflect your setup
+    private static final String DRIVERS_PATHS_FILE = "config/paths.properties"; // paths to all necessary executables; the contents of that file should be edited to reflect your setup
     //@}
     
     private static final int STATS_SAMPLING_SIZE = 100;
