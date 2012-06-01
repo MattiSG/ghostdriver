@@ -28,6 +28,10 @@ public abstract class WebDriverTester {
      */
     public static int port = 8080;
     
+    /** Number of iterations when computing statistics.
+     */
+    public static final int STATS_SAMPLING_SIZE = 100;
+    
     
     /** The desired capabilities for all drivers.
      */
@@ -49,8 +53,6 @@ public abstract class WebDriverTester {
     
     private static final String DRIVERS_PATHS_FILE = "config/paths.properties"; // paths to all necessary executables; the contents of that file should be edited to reflect your setup
     //@}
-    
-    private static final int STATS_SAMPLING_SIZE = 100;
     
     /** Some drivers might need to start another process.
     */
