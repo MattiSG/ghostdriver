@@ -112,8 +112,10 @@ public abstract class WebDriverTester {
                                + "-----------------------------------------------\n"
                                + "If you simply want to test one driver, provide its name as argument.\n"
                                + "You can see and edit possible drivers in the .properties files along this example file.");
-            runStats();
+
+            long[][] stats = runStats();
             
+            printStats(stats);
         } else {
             timeTestWithDriver(args[0].toLowerCase());
             
@@ -144,16 +146,6 @@ public abstract class WebDriverTester {
                 stats[driverCount][0] /= STATS_SAMPLING_SIZE;
                 stats[driverCount][1] /= STATS_SAMPLING_SIZE;
                 stats[driverCount][2] /= STATS_SAMPLING_SIZE;
-                
-                // Display results
-                System.out.println("");
-                System.out.println("--------------------------------------");
-                System.out.println("*** STATS for driver '" + currentDriver + "', averaged over " + STATS_SAMPLING_SIZE + " runs:");
-                System.out.println("*** Driver start:\t" + (stats[driverCount][0] / 10E6) + " ms"); // divide to obtain ms from ns
-                System.out.println("*** Test execution:\t" + (stats[driverCount][1] / 10E6) + " ms"); // divide to obtain ms from ns
-                System.out.println("*** Total execution:\t" + (stats[driverCount][2] / 10E6) + " ms"); // divide to obtain ms from ns
-                System.out.println("--------------------------------------");
-                System.out.println("");
             } catch (Exception e) {
                 System.err.println("Woops, an error occured while testing driver '" + currentDriver + "'!");
                 e.printStackTrace();
@@ -164,6 +156,26 @@ public abstract class WebDriverTester {
         }
         
         return stats;
+    }
+    
+    /**
+     *@see  #runStats()
+     */
+    private void printStats(long[][] data) {
+        byte driverCount = 0;
+        
+        for (String currentDriver : availableDrivers.stringPropertyNames()) {
+            System.out.println("");
+            System.out.println("--------------------------------------");
+            System.out.println("*** STATS for driver '" + currentDriver + "', averaged over " + STATS_SAMPLING_SIZE + " runs:");
+            System.out.println("*** Driver start:\t" + (data[driverCount][0] / 10E5) + " ms"); // divide to obtain ms from ns
+            System.out.println("*** Test execution:\t" + (data[driverCount][1] / 10E5) + " ms"); // divide to obtain ms from ns
+            System.out.println("*** Total execution:\t" + (data[driverCount][2] / 10E5) + " ms"); // divide to obtain ms from ns
+            System.out.println("--------------------------------------");
+            System.out.println("");
+            
+            driverCount++;
+        }
     }
 
     /**
