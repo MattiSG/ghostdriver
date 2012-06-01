@@ -190,10 +190,12 @@ public class GoogleCheese {
         timeToStartDriver = System.nanoTime() - startTime;
         System.out.println("Driver started in (ns): " + timeToStartDriver);
         
-        runTestOn(driver);
-        
-        if (phantomjsProcess != null)
-            phantomjsProcess.destroy();
+        try {
+            runTestOn(driver);
+        } finally { // Ensure we don't leave zombies around...
+            if (phantomjsProcess != null)
+                phantomjsProcess.destroy();
+        }
 
         totalTime = System.nanoTime() - startTime;
         timeToTest = totalTime - timeToStartDriver;
