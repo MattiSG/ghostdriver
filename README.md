@@ -39,7 +39,7 @@ PhantomJS's speed when it acts as a RemoteWebDriver Server, do the following:
 2. Build and launch the first Java-based example (to build we use [Gradle](http://www.gradle.org/), already included):
 
     ```bash
-    $> cd examples/google_cheese/
+    $> cd test
     $> ./gradlew googleExample -Pargs="ghost"
     ```
 
