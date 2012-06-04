@@ -1,4 +1,4 @@
-package ghostdriver;
+package ghostdriver.performance;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;

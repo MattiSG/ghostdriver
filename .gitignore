@@ -14,4 +14,4 @@ build
 *.class
 
 # Config
-examples/google_cheese/config/paths.properties
+test/config/paths.properties
