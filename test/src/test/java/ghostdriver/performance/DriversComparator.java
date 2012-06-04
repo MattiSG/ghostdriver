@@ -5,10 +5,13 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
+
+import java.io.File;
 
 
 public abstract class DriversComparator extends ghostdriver.test.common.Initializer {
@@ -157,11 +160,13 @@ public abstract class DriversComparator extends ghostdriver.test.common.Initiali
     protected WebDriver setupChromeDriver() {
         System.setProperty("webdriver.chrome.driver", paths.getProperty("chromedriver"));
         
+        ChromeOptions options = new ChromeOptions();
+        
         String chromeBinary = paths.getProperty("chrome");
         if (chromeBinary != null)
-            desiredCapabilities.setCapability("chrome.binary", chromeBinary);
+            options.setBinary(new File(chromeBinary));
         
-        WebDriver driver = new ChromeDriver(desiredCapabilities);
+        WebDriver driver = new ChromeDriver(options);
         
         return driver;
     }
