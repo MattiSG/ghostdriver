@@ -34,7 +34,7 @@ of PhantomJS, and build it (I assume you know Git).
 There is **plenty to do before this is usable**, but if you can't wait to try
 PhantomJS's speed when it acts as a RemoteWebDriver Server, do the following:
 
-1. Indicate the location of the needed executables (`phantomjs`…) by editing the `examples/google_cheese/config/paths.properties.default` file.
+1. Indicate the location of the needed executables (`phantomjs`…) by editing the `test/config/paths.properties.default` file.
 
 2. Build and launch the first Java-based example (to build we use [Gradle](http://www.gradle.org/), already included):
 
