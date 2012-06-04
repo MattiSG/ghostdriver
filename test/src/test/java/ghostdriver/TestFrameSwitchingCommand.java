@@ -1,4 +1,4 @@
-package ghostdriver;
+package ghostdriver.test;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package ghostdriver.performance;
+package ghostdriver.test.performance;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
-public class GoogleCheeseAndNavigate extends WebDriverTester {
+public class GoogleCheeseAndNavigate extends DriversComparator {
 	public static void main(String[] args) {
 		new GoogleCheeseAndNavigate(args);
 	}

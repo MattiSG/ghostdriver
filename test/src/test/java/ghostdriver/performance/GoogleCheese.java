@@ -1,11 +1,11 @@
-package ghostdriver.performance;
+package ghostdriver.test.performance;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class GoogleCheese extends WebDriverTester {
+public class GoogleCheese extends DriversComparator {
 	public static void main(String[] args) {
 		new GoogleCheese(args);
 	}

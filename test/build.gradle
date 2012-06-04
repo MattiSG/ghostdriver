@@ -39,10 +39,10 @@ test {
 
 // ./gradlew googleExample [-Pargs="[firefox|chrome|ghost [SERVER_PORT]]"]
 task googleExample(type: JavaExec) {
-    main "ghostdriver.performance.GoogleCheese"
+    main "ghostdriver.test.performance.GoogleCheese"
 }
 
 // ./gradlew navigationExample [-Pargs="[firefox|chrome|ghost [SERVER_PORT]]"]
 task navigationExample(type: JavaExec) {
-    main "ghostdriver.performance.GoogleCheeseAndNavigate"
+    main "ghostdriver.test.performance.GoogleCheeseAndNavigate"
 }
