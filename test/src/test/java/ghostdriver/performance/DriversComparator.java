@@ -22,7 +22,7 @@ public abstract class DriversComparator extends ghostdriver.test.common.Initiali
      * Where `diverName` is one of the drivers listed in the `DRIVERS_LIST_FILE` properties file.
      * If `driverName` refers to GhostDriver, then the optional `port` argument may be used to override the default.
      */
-    protected WebDriverTester(String[] args) {
+    protected DriversComparator(String[] args) {
         if (args.length == 0) {
             System.out.println("Testing all drivers and computing stats on them\n"
                                + "-----------------------------------------------\n"
