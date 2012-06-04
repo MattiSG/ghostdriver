@@ -124,7 +124,7 @@ public abstract class DriversComparator extends ghostdriver.test.common.Initiali
             System.err.println("Oops, driver '" + driverName + "' is unknown  :/");
             System.err.println("Take a look at the '" + DRIVERS_LIST_FILE + "' for a list of available drivers.");
             
-            return null;	
+            return null;    
         }
         
         timeToStartDriver = System.nanoTime() - startTime;
@@ -146,8 +146,8 @@ public abstract class DriversComparator extends ghostdriver.test.common.Initiali
     
     protected WebDriver setupFirefoxDriver() {
         String firefoxBinary = paths.getProperty("firefox");
-    	if (firefoxBinary != null)
-	        System.setProperty("webdriver.firefox.bin", firefoxBinary);
+        if (firefoxBinary != null)
+            System.setProperty("webdriver.firefox.bin", firefoxBinary);
 
         WebDriver driver = new FirefoxDriver(desiredCapabilities);
         

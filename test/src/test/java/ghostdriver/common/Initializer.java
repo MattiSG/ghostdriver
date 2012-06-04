@@ -87,17 +87,17 @@ public class Initializer {
     protected WebDriver setupGhostDriver() {
         WebDriver driver = null;
         try {
-	        serverProcess = Runtime.getRuntime().exec(paths.getProperty("phantomjs") + ' ' + paths.getProperty("ghostdriver"));
-	        
-	        BufferedReader phantomOutputReader = new BufferedReader(new InputStreamReader(serverProcess.getInputStream()));
-	        while (phantomOutputReader.readLine () == null) { } //< As soon as Ghostdriver outputs something, we can continue
-	        phantomOutputReader.close();
-	        
-    	    System.out.println("Remote WebDriver server port: " + port);    
-	        driver = new RemoteWebDriver(new URL("http://localhost:" + port), desiredCapabilities);
+            serverProcess = Runtime.getRuntime().exec(paths.getProperty("phantomjs") + ' ' + paths.getProperty("ghostdriver"));
+            
+            BufferedReader phantomOutputReader = new BufferedReader(new InputStreamReader(serverProcess.getInputStream()));
+            while (phantomOutputReader.readLine () == null) { } //< As soon as Ghostdriver outputs something, we can continue
+            phantomOutputReader.close();
+            
+            System.out.println("Remote WebDriver server port: " + port);    
+            driver = new RemoteWebDriver(new URL("http://localhost:" + port), desiredCapabilities);
         } catch (Exception e) {
-        	cleanup(driver);
-        	throw new RuntimeException(e);
+            cleanup(driver);
+            throw new RuntimeException(e);
         }
                 
         return driver;

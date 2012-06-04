@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 
 
 public class GoogleCheese extends DriversComparator {
-	public static void main(String[] args) {
-		new GoogleCheese(args);
-	}
-	
-	private GoogleCheese(String[] args) {
-		super(args);
-	}
-	
+    public static void main(String[] args) {
+        new GoogleCheese(args);
+    }
+    
+    private GoogleCheese(String[] args) {
+        super(args);
+    }
+    
     protected void runTestOn(WebDriver driver) {
         // And now use this to visit Google
         System.out.println("Loading 'http://www.google.com'...");

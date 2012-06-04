@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit;
 
 
 public class GoogleCheeseAndNavigate extends DriversComparator {
-	public static void main(String[] args) {
-		new GoogleCheeseAndNavigate(args);
-	}
-	
-	private GoogleCheeseAndNavigate(String[] args) {
-		super(args);
-	}
-	
+    public static void main(String[] args) {
+        new GoogleCheeseAndNavigate(args);
+    }
+    
+    private GoogleCheeseAndNavigate(String[] args) {
+        super(args);
+    }
+    
     protected void runTestOn(WebDriver driver) {
         System.out.println("Loading 'http://www.google.com'...");
         driver.get("http://www.google.com");
